@@ -2,8 +2,10 @@ name: If merged (all branchies)
 
 on:
   pull_request:
-    branches: 
-      - '*'
+    branches:
+      - main
+      - develop
+      - release
     types:
       - closed  
 
