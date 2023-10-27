@@ -1,4 +1,4 @@
-name: If merged (all branchies)
+name: If merged (main, develop, release)
 
 on:
   pull_request:
