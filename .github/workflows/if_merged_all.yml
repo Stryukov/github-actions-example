@@ -1,9 +1,11 @@
-name: If merged
+name: If merged (all branchies)
 
 on:
   pull_request:
+    branches: 
+      - '*'
     types:
-      - closed
+      - closed  
 
 jobs:
   if_merged:
