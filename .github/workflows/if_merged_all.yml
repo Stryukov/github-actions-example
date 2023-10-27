@@ -1,0 +1,18 @@
+name: If merged (all branchies)
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+      - release
+    types:
+      - closed  
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo The PR was merged
