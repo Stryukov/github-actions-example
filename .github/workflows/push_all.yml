@@ -1,11 +1,7 @@
 name: CI push all branch
 
 on:
-  push:
-    branches: 
-      - '*'
-
-  workflow_dispatch:
+  - push
 
 jobs:
   build:
