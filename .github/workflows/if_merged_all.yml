@@ -3,9 +3,9 @@ name: If merged (main, develop, release)
 on:
   pull_request:
     branches:
-      - main
-      - develop
-      - release
+      - 'main'
+      - 'develop'
+      - 'release-*'
     types:
       - closed  
 
