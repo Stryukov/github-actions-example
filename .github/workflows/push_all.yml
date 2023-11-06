@@ -2,8 +2,6 @@ name: CI push all branch
 
 on:
   push:
-    branches:
-      - '*'
     branches-ignore:
       - 'main'
       - 'develop'
