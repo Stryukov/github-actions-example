@@ -1,7 +1,13 @@
 name: CI push all branch
 
 on:
-  - push
+  push:
+    branches:
+      - '*'
+    branches-ignore:
+      - 'main'
+      - 'develop'
+      - 'release-*' 
 
 jobs:
   build:
