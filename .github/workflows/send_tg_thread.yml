@@ -11,19 +11,29 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.x
+        python-version: 3.11
 
-    - name: Install dependencies
+    - name: Install requests
+      run: pip install requests
+
+    - name: Send custom message
       run: |
-        python -m pip install --upgrade pip
-        pip install aiogram
-
-    - name: Send Telegram Message
-      run: |
-        python send_telegram_message.py ${{ secrets.TELEGRAM_BOT_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }}
-
+        python send_telegram_message.py \
+          ${{ secrets.TELEGRAM_TOKEN }} \
+          ${{ secrets.TELEGRAM_TO }} \
+          ${{ secrets.CHAT_THREAD }} \
+          ${{ github.actor }} \
+          ${{ github.event.commits[0].message }} \
+          ${{ github.repository }} \
+          https://github.com/${{ github.repository }}/commit/${{ github.sha }} \
+          ${{ github.event.pull_request.title }} \
+          ${{ github.event.pull_request.number }} \
+          ${{ github.event.pull_request.user.login }} \
+          ${{ github.event.pull_request.base.ref }} \
+          ${{ github.event.pull_request.head.ref }} \
+          ${{ github.event.pull_request.html_url }}
