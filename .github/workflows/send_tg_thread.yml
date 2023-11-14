@@ -1,0 +1,29 @@
+name: Send Telegram Message
+
+on:
+  push:
+    branches-ignore:
+      - 'main'
+
+jobs:
+  send_telegram_message:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install aiogram
+
+    - name: Send Telegram Message
+      run: |
+        python send_telegram_message.py ${{ secrets.TELEGRAM_BOT_TOKEN }} ${{ secrets.TELEGRAM_CHAT_ID }}
+
