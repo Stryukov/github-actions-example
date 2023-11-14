@@ -34,4 +34,5 @@ def send_telegram_message(*args):
 
 
 if __name__ == '__main__':
+    print(*sys.argv)
     send_telegram_message(*sys.argv)
