@@ -18,22 +18,22 @@ jobs:
       with:
         python-version: 3.11
 
-    - name: Install requests
-      run: pip install requests
+    - name: Install dependences
+      run: pip install requests argparse
 
     - name: Send custom message
       run: |
         python send_telegram_message.py \
-          ${{ secrets.TELEGRAM_TOKEN }} \
-          ${{ secrets.TELEGRAM_TO }} \
-          ${{ secrets.CHAT_THREAD }} \
-          ${{ github.actor }} \
-          ${{ github.event.commits[0].message }}. \
-          ${{ github.repository }} \
-          https://github.com/${{ github.repository }}/commit/${{ github.sha }} \
-          ${{ github.event.pull_request.title }} \
-          ${{ github.event.pull_request.number }} \
-          ${{ github.event.pull_request.user.login }} \
-          ${{ github.event.pull_request.base.ref }} \
-          ${{ github.event.pull_request.head.ref }} \
-          ${{ github.event.pull_request.html_url }}
+          --bot_token "${{ secrets.TELEGRAM_TOKEN }}" \
+          --chat_id "${{ secrets.TELEGRAM_TO }}" \
+          --message_thread_id "${{ secrets.CHAT_THREAD }}" \
+          --actor "${{ github.actor }}" \
+          --message "${{ github.event.commits[0].message }}" \
+          --repository "${{ github.repository }}" \
+          --commit_url "https://github.com/${{ github.repository }}/commit/${{ github.sha }}" \
+          --pr_title "${{ github.event.pull_request.title }}" \
+          --pr_number "${{ github.event.pull_request.number }}" \
+          --pr_author "${{ github.event.pull_request.user.login }}" \
+          --pr_base_branch "${{ github.event.pull_request.base.ref }}" \
+          --pr_head_branch "${{ github.event.pull_request.head.ref }}" \
+          --pr_url "${{ github.event.pull_request.html_url }}"
