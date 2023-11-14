@@ -28,7 +28,7 @@ jobs:
           ${{ secrets.TELEGRAM_TO }} \
           ${{ secrets.CHAT_THREAD }} \
           ${{ github.actor }} \
-          ${{ github.event.commits[0].message }} \
+          ${{ github.event.commits[0].message }}. \
           ${{ github.repository }} \
           https://github.com/${{ github.repository }}/commit/${{ github.sha }} \
           ${{ github.event.pull_request.title }} \
