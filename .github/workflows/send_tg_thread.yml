@@ -24,8 +24,8 @@ jobs:
     - name: Send custom message
       run: |
         python send_telegram_message.py \
-          --bot_token "${{ secrets.TELEGRAM_TOKEN }}" \
-          --chat_id "${{ secrets.TELEGRAM_TO }}" \
+          --bot_token "${{ secrets.TELEGRAM_BOT_TOKEN }}" \
+          --chat_id "${{ secrets.TELEGRAM_CHAT_ID }}" \
           --message_thread_id "${{ secrets.CHAT_THREAD }}" \
           --actor "${{ github.actor }}" \
           --message "${{ github.event.commits[0].message }}" \
